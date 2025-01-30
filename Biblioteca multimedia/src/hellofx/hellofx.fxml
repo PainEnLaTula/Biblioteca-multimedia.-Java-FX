@@ -13,14 +13,14 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane style="-fx-background-color: #9ba2e9;" xmlns="http://javafx.com/javafx/23.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hellofx.Controller">
+<BorderPane style="-fx-background-color: #3498db;" xmlns="http://javafx.com/javafx/23.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hellofx.Controller">
    <center>
       <VBox>
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
          <children>
-            <Text fx:id="videoTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo" textAlignment="CENTER" wrappingWidth="599.1300010681152" />
+            <Text fx:id="videoTitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo del video" textAlignment="CENTER" wrappingWidth="599.1300010681152" />
             <MediaView fx:id="mediaView" fitHeight="300.0" fitWidth="600.0" />
          </children>
       </VBox>
@@ -81,9 +81,35 @@
       </MenuBar>
    </top>
    <left>
-      <VBox prefHeight="338.0" prefWidth="82.0" style="-fx-background-color: #d7e0ed; -fx-border-radius: 30px;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="338.0" prefWidth="82.0" style="-fx-background-color: #ccbc8e; -fx-border-radius: 30px;" BorderPane.alignment="CENTER">
          <children>
-            
+            <VBox prefHeight="32.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Velocidad " textAlignment="CENTER" wrappingWidth="99.60799789428711" />
+                  <Slider fx:id="speedSlider" blockIncrement="0.1" max="2.0" onMouseDragged="#changeSpeed" onMouseReleased="#changeSpeed" value="1.0" />
+                  <Button fx:id="defaultV" mnemonicParsing="false" onMouseClicked="#defaultV" prefHeight="38.0" prefWidth="100.0" style="-fx-background-color: #fffbf3;" text="x1.0" textAlignment="CENTER" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="32.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tamaño/Ratio" textAlignment="CENTER" wrappingWidth="99.60799789428711" />
+                  <Button fx:id="fbutton" mnemonicParsing="false" onMouseClicked="#setAspectRatio16_9" style="-fx-background-color: #fffbf3;" text="16:9" />
+                  <Button fx:id="sbutton" mnemonicParsing="false" onMouseClicked="#setAspectRatio4_3" style="-fx-background-color: #fffbf3;" text="4:3" />
+                  <Button fx:id="tbutton" mnemonicParsing="false" onMouseClicked="#setAspectRatioFill" style="-fx-background-color: #fffbf3;" text="Fill" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </VBox>
          </children>
          <opaqueInsets>
             <Insets />
@@ -94,7 +120,7 @@
       </VBox>
    </left>
    <right>
-      <ListView fx:id="videoList" prefHeight="200.0" prefWidth="164.0" style="-fx-background-color: #d7e0ed;" BorderPane.alignment="CENTER">
+      <ListView fx:id="videoList" prefHeight="200.0" prefWidth="164.0" style="-fx-background-color: #ccbc8e;" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets right="10.0" top="10.0" />
          </BorderPane.margin>

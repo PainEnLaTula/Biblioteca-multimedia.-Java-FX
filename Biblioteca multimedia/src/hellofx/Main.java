@@ -13,7 +13,7 @@ public class Main extends Application {
         Parent root = loader.load();
         Controller controller = loader.getController();
         controller.setMainWindow(primaryStage);
-        primaryStage.setTitle("Reproductor de Videos");
+        primaryStage.setTitle("Biblioteca multimedia, Reproductor de Videos");
         primaryStage.setScene(new Scene(root, 1200, 800));
         primaryStage.show();
     }
@@ -21,4 +21,4 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-} 
+}

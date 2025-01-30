@@ -1,0 +1,23 @@
+.root {
+    -fx-font-family: 'Arial';
+}
+
+MenuBar {
+    -fx-background-color: #d5dee7;
+}
+
+Menu {
+    -fx-text-fill: white;
+}
+
+Button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+MediaView {
+    -fx-border-color: #95a5a6;
+    -fx-border-width: 2px;
+}
