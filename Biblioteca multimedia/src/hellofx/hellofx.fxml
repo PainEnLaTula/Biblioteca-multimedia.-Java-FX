@@ -13,7 +13,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane style="-fx-background-color: #3498db;" xmlns="http://javafx.com/javafx/23.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hellofx.Controller">
+<BorderPane style="-fx-background-color: #74a3a7;" xmlns="http://javafx.com/javafx/23.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hellofx.Controller">
    <center>
       <VBox alignment="CENTER">
          <BorderPane.margin>

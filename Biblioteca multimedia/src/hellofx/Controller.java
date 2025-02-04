@@ -181,7 +181,7 @@ public class Controller implements Initializable {
             mediaView.fitWidthProperty().unbind();
             mediaView.fitHeightProperty().unbind();
             mediaView.fitWidthProperty().bind(parentPane.widthProperty());
-            mediaView.fitHeightProperty().bind(parentPane.heightProperty().subtract(50));
+            mediaView.fitHeightProperty().bind(parentPane.heightProperty().subtract(18));//18 porque es el numero más pequeño antes de que se estira para abajo el video
         }
     }
 
