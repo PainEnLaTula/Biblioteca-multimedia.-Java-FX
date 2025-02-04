@@ -12,12 +12,12 @@ Menu {
 
 Button {
     -fx-background-color: #3498db;
-    -fx-text-fill: white;
+    -fx-text-fill: rgb(80, 63, 63);
     -fx-font-size: 14px;
     -fx-background-radius: 5;
 }
 
 MediaView {
-    -fx-border-color: #95a5a6;
+    -fx-border-color: #74a3a7;
     -fx-border-width: 2px;
 }
