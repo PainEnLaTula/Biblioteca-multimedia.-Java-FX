@@ -15,7 +15,7 @@
 
 <BorderPane style="-fx-background-color: #74a3a7;" xmlns="http://javafx.com/javafx/23.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hellofx.Controller">
    <center>
-      <VBox alignment="CENTER">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
@@ -43,6 +43,7 @@
                 <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseMedia" style="-fx-background-color: #d7e0ed;" stylesheets="@aplication.css" text="PAUSE" textAlignment="CENTER" />
                 <Button fx:id="playButton" mnemonicParsing="false" onAction="#playMedia" style="-fx-background-color: #d7e0ed;" text="PLAY" />
                 <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetMedia" style="-fx-background-color: #d7e0ed;" text="RESET" />
+                <Button fx:id="maximizeButton" mnemonicParsing="false" onAction="#toggleMaximize" style="-fx-background-color: #fffbf3;" text="Maximizar" />
                   <Slider fx:id="volumeSlider" cache="true" max="150.0" maxWidth="100.0" nodeOrientation="LEFT_TO_RIGHT">
                      <HBox.margin>
                         <Insets />
@@ -102,7 +103,7 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tamaño/Ratio" textAlignment="CENTER" wrappingWidth="99.60799789428711" />
                   <Button fx:id="fbutton" mnemonicParsing="false" onMouseClicked="#setAspectRatio16_9" style="-fx-background-color: #fffbf3;" text="16:9" />
                   <Button fx:id="sbutton" mnemonicParsing="false" onMouseClicked="#setAspectRatio4_3" style="-fx-background-color: #fffbf3;" text="4:3" />
-                  <Button fx:id="tbutton" mnemonicParsing="false" onMouseClicked="#setAspectRatioFill" style="-fx-background-color: #fffbf3;" text="Fill" />
+                  <Button fx:id="tbutton" mnemonicParsing="false" onMouseClicked="#setAspectRatioFill" style="-fx-background-color: #fffbf3;" text="Autollenar" />
                </children>
                <opaqueInsets>
                   <Insets />

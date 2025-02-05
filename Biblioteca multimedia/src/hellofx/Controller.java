@@ -22,6 +22,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -50,6 +51,8 @@ public class Controller implements Initializable {
     private Media media;
     private MediaPlayer mediaPlayer;
     private Stage mainWindow;
+
+    private boolean isMaximized = false;
 
     private Map<String, Duration> playbackPositions = new HashMap<>();
     private String currentVideo;
@@ -150,40 +153,50 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void setAspectRatio4_3() {
-        mediaView.setPreserveRatio(true);
-        if (mediaView.getParent() instanceof Pane) {
-            Pane parentPane = (Pane) mediaView.getParent();
-            mediaView.fitWidthProperty().unbind();
-            mediaView.fitHeightProperty().unbind();
-            mediaView.fitWidthProperty().bind(parentPane.widthProperty());
-            mediaView.fitHeightProperty().bind(parentPane.widthProperty().multiply(3.0 / 4));
+private void setAspectRatio4_3() {
+    mediaView.setPreserveRatio(true);
+    mediaView.fitWidthProperty().unbind();
+    mediaView.fitHeightProperty().unbind();
+
+    if (mediaView.getParent() instanceof Pane) {
+        Pane parentPane = (Pane) mediaView.getParent();
+        double parentWidth = parentPane.getWidth();
+        double parentHeight = parentPane.getHeight() - 18; // Evitar que cubra botones
+
+        // Calcular tamaño manteniendo relación 4:3
+        double newWidth = parentWidth;
+        double newHeight = newWidth * (3.0 / 4.0);
+
+        if (newHeight > parentHeight) {
+            newHeight = parentHeight;
+            newWidth = newHeight * (4.0 / 3.0);
         }
+
+        mediaView.setFitWidth(newWidth);
+        mediaView.setFitHeight(newHeight);
     }
+}
+
+@FXML
+private void setAspectRatioFill() {
+    mediaView.setPreserveRatio(false);
+    mediaView.fitWidthProperty().unbind();
+    mediaView.fitHeightProperty().unbind();
+
+    if (mediaView.getParent() instanceof Pane) {
+        Pane parentPane = (Pane) mediaView.getParent();
+        mediaView.fitWidthProperty().bind(parentPane.widthProperty());
+        mediaView.fitHeightProperty().bind(parentPane.heightProperty().subtract(18));
+    }
+}
+
 
     @FXML
     private void setAspectRatio16_9() {
-        mediaView.setPreserveRatio(true);
-        if (mediaView.getParent() instanceof Pane) {
-            Pane parentPane = (Pane) mediaView.getParent();
-            mediaView.fitWidthProperty().unbind();
-            mediaView.fitHeightProperty().unbind();
-            mediaView.fitWidthProperty().bind(parentPane.widthProperty());
-            mediaView.fitHeightProperty().bind(parentPane.widthProperty().multiply(9.0 / 16));
-        }
-    }
-
-    @FXML
-    private void setAspectRatioFill() {
-        mediaView.setPreserveRatio(false);
-        if (mediaView.getParent() instanceof Pane) {
-            Pane parentPane = (Pane) mediaView.getParent();
-            mediaView.fitWidthProperty().unbind();
-            mediaView.fitHeightProperty().unbind();
-            mediaView.fitWidthProperty().bind(parentPane.widthProperty());
-            mediaView.fitHeightProperty().bind(parentPane.heightProperty().subtract(18));//18 porque es el numero más pequeño antes de que se estira para abajo el video
-        }
-    }
+    mediaView.setPreserveRatio(true);
+    mediaView.setFitWidth(mediaView.getScene().getWidth() * 0.9);
+    mediaView.setFitHeight(mediaView.getScene().getHeight() * 0.7);
+}
 
     private void loadVideo(String filePath) {
         if (mediaPlayer != null) {
@@ -249,4 +262,19 @@ public class Controller implements Initializable {
             playbackPositions.put(currentVideo, mediaPlayer.getCurrentTime());
         }
     }
+
+@FXML
+private void toggleMaximize() {
+    if (mediaView.isPreserveRatio()) {
+        mediaView.setPreserveRatio(false);
+        mediaView.fitWidthProperty().bind(mediaView.getScene().widthProperty());
+        mediaView.fitHeightProperty().bind(mediaView.getScene().heightProperty().subtract(140));
+    } else {
+        mediaView.setPreserveRatio(true);
+        mediaView.fitWidthProperty().unbind();
+        mediaView.fitHeightProperty().unbind();
+        mediaView.setFitWidth(600);
+        mediaView.setFitHeight(300);
+    }
+}
 }
